@@ -7,8 +7,6 @@ import {
 } from "@/lib/constants";
 import db from "@/lib/db";
 import { z } from "zod";
-import { getIronSession } from "iron-session";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/session";
 
@@ -24,34 +22,6 @@ const checkPasswords = ({
   password: string;
   confirm_password: string;
 }) => password === confirm_password;
-// const checkUniqueUsername = async (username: string) => {
-//   const user = await db.user.findUnique({
-//     where: {
-//       username,
-//     },
-//     select: {
-//       id: true,
-//     },
-//   });
-//   // if (user) {
-//   //   return false;
-//   // } else {
-//   //   return true;
-//   // }
-//   return !Boolean(user);
-// };
-
-// const checkUniqueEmail = async (email: string) => {
-//   const user = await db.user.findUnique({
-//     where: {
-//       email,
-//     },
-//     select: {
-//       id: true,
-//     },
-//   });
-//   return Boolean(user) === false;
-// };
 
 const formSchema = z
   .object({
